@@ -58,7 +58,7 @@ pipeline
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: '/allure-results']]
+                        results: [[path: 'Regression Test/allure-results']]
                     ])
                 }
             }
@@ -70,7 +70,7 @@ pipeline
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
                                   keepAll: true, 
-                                  reportDir: 'target/chaintest', 
+                                  reportDir: 'Regression Test/target/chaintest', 
                                   reportFiles: 'Index.html', 
                                   reportName: 'HTML Regression ChainTest Report', 
                                   reportTitles: ''])
@@ -102,7 +102,7 @@ pipeline
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
                                   keepAll: true, 
-                                  reportDir: 'target/chaintest', 
+                                  reportDir: 'Regression Test/target/chaintest', 
                                   reportFiles: 'Index.html', 
                                   reportName: 'HTML Sanity ChainTest Report', 
                                   reportTitles: ''])

@@ -10,10 +10,11 @@ pipeline
     {
         stage('Build') 
         {
-            steps
-            {
+            steps{
+          dir('build-repo')  {
                  git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                  bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
             }
             post 
             {
@@ -37,11 +38,13 @@ pipeline
         
                 
         stage('Regression Automation Tests') {
-            steps {
+            steps{
+            dir('Regression Test') {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/san1982-del/SeleniumJavaFramework.git'
                     bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
                     
+                }
                 }
             }
         }
@@ -82,11 +85,13 @@ pipeline
         
         stage('Sanity Automation Test') {
             steps {
+            dir('Regression Test'){
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/san1982-del/SeleniumJavaFramework.git'
                     bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
                     
                 }
+            }
             }
         }
         

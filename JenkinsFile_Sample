@@ -1,0 +1,35 @@
+pipeline {
+    agent any // Specifies where the pipeline will run
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..' // Replace with your build commands (e.g., maven 'install', npm 'install')
+                // Add your build steps here
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..' // Replace with your test commands (e.g., npm 'test', sh './run_tests.sh')
+                // Add your test steps here
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....' // Replace with your deployment commands
+                // Add your deployment steps here
+            }
+        }
+    }
+    // Optional: Define actions to perform after the entire pipeline finishes
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}

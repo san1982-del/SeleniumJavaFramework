@@ -10,7 +10,7 @@
 
 	</listeners>
 
-	<test name="Login Page Test_chrome">
+	<test name="Login Page Test">
 		<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
@@ -29,7 +29,7 @@
 		</classes>
 	</test>-->
 
-	<test name="Accounts Page Test_chrome">
+	<test name="Accounts Page Test">
 		<parameter name="browser" value="firefox" />
 
 		<classes>

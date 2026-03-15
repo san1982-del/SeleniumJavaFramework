@@ -142,7 +142,7 @@ public class DriverFactory {
 	// mvn clean install -Denv="stage"
 		public Properties initProp() {
 
-			String envName = System.getProperty("env");
+			String envName = System.getProperty("env");//system class will provide get property method to capture value from command line
 			FileInputStream ip = null;
 			prop = new Properties();
 

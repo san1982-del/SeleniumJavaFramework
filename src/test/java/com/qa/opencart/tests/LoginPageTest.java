@@ -3,6 +3,7 @@ package com.qa.opencart.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.qa.opencart.Utils.LogUtil;
 import com.qa.opencart.base.BaseTest;
 
 import io.qameta.allure.Description;
@@ -14,8 +15,6 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
 import static com.qa.opencart.constants.AppConstants.*;
-
-
 
 @Feature("F 50: Open Cart - Login Feature")
 @Epic("Epic 100: design pages for open cart application")
@@ -30,10 +29,11 @@ public class LoginPageTest extends BaseTest {
 	@Owner("Sandeep Dahiya")
 	@Test(description="This test validates the Loginpage  Title")
 	public void validateLoginPageTitle() {
-		
 		String actualTitle = loginpage.loginPageTitle();
 		Assert.assertEquals(actualTitle, LOGIN_PAGE_TITLE );
+		LogUtil.info(actualTitle);
 	}
+	
 	
 	@Description("check user is able to login with valid user credentials...")
 	@Severity(SeverityLevel.BLOCKER)
@@ -43,5 +43,6 @@ public class LoginPageTest extends BaseTest {
 		
 		accPage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 		Assert.assertEquals(accPage.accountPageTitle(), HOME_PAGE_TITLE );
+		LogUtil.info(accPage.accountPageTitle());
 	}
 }
